@@ -24,11 +24,11 @@ class Home extends Component {
     const { data: { result, loading, error, page }, sortDrag, currentPage, activePage } = this.props;
 
     return (
-      <Container className="mt-5">
+      <Container className='mt-5'>
         <Row>
           {loading ? <Loader /> :
-            error ? <p className="loading text-danger">Error, try again...</p> :
-              <div className="content">
+            error ? <p className='loading text-danger'>Error, try again...</p> :
+              <div className='content'>
                 {result.financials && result.financials.length &&
                   <MyTable
                     result={result.financials}

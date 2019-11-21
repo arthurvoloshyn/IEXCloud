@@ -13,7 +13,7 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path='/' component={HomePage} />
           </Switch>
         </BrowserRouter>
       </Provider>

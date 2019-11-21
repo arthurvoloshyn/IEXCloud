@@ -12,7 +12,7 @@ class PaginationItems extends Component {
     const { number, activePage } = this.props;
 
     return (
-      <PaginationItem id={'item_' + number} className={number === activePage ? 'active' : ''}>
+      <PaginationItem id={`item_${number}`} className={number === activePage ? 'active' : ''}>
         <PaginationLink id={number} onClick={this.handleClick.bind(this, number)}>
           {number}
         </PaginationLink>

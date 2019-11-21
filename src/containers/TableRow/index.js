@@ -4,6 +4,7 @@ import { Draggable } from 'react-beautiful-dnd';
 class TableRow extends Component {
   render() {
     const { result, item, index } = this.props;
+    const { reportDate, totalAssets, totalCash, totalDebt } = item;
     let number;
 
     result[0].indexOf(item) !== -1 ? number = result[0].indexOf(item) + 1 :
@@ -17,11 +18,11 @@ class TableRow extends Component {
             ref={provided.innerRef}
             {...provided.dragHandleProps}
           >
-            <th scope="row">{number}</th>
-            <td>{item.reportDate}</td>
-            <td>{item.totalAssets}</td>
-            <td>{item.totalCash}</td>
-            <td>{item.totalDebt}</td>
+            <th scope='row'>{number}</th>
+            <td>{reportDate}</td>
+            <td>{totalAssets}</td>
+            <td>{totalCash}</td>
+            <td>{totalDebt}</td>
           </tr>
         )}
       </Draggable>

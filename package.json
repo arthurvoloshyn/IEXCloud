@@ -1,11 +1,14 @@
 {
-  "name": "finance",
+  "homepage": "https://ArturW1998.github.io/ReactStockReports",
+  "name": "ReactStockReports",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "react-scripts": "3.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,6 +39,7 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-standard": "^4.0.0",
     "fetch-mock": "^7.3.3",
+    "gh-pages": "^2.1.1",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^11.0.2",
     "react-dom": "^16.8.6",

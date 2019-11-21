@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <BrowserRouter basename="/ReactStockReports/">
           <Switch>
             <Route exact path='/' component={HomePage} />
           </Switch>

@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter basename="/ReactStockReports/">
+        <BrowserRouter basename="/IexcloudReactApi/">
           <Switch>
             <Route exact path='/' component={HomePage} />
           </Switch>

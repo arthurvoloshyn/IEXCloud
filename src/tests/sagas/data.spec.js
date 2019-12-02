@@ -1,14 +1,16 @@
 import { put, call, delay, takeLatest, all } from 'redux-saga/effects';
-import { requestData, requestDataSuccess, requestDataError } from '../../actions';
+import { requestData, requestDataSuccess } from '../../actions';
 import { fetchData } from '../../api';
 import rootSaga, { fetchDataAsync, watchFetchData } from '../../sagas/data';
 import { FETCHED_DATA } from '../../consts';
 
 describe('Data saga workers', () => {
   const generator = fetchDataAsync();
+  /* eslint-disable no-unused-vars */
   const data = {
     financials: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   };
+  /* eslint-enable */
 
   it('requestData', () => {
     const result = generator.next().value;

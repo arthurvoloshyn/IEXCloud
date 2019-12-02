@@ -60,12 +60,14 @@ describe('Data reducer', () => {
   });
 
   it('REQUESTED_DATA_FAILED', () => {
+    /* eslint-disable no-unused-vars */
     const stateBeforeError = {
       result: {},
       loading: true,
       error: false,
       page: []
     };
+    /* eslint-enable */
 
     const action = {
       type: REQUESTED_DATA_FAILED

@@ -12,11 +12,11 @@ class TableRow extends Component {
 
     return (
       <Draggable draggableId={String(index)} index={index}>
-        {provided => (
+        {({ draggableProps, innerRef, dragHandleProps }) => (
           <tr
-            {...provided.draggableProps}
-            ref={provided.innerRef}
-            {...provided.dragHandleProps}
+            {...draggableProps}
+            ref={innerRef}
+            {...dragHandleProps}
           >
             <th scope='row'>{number}</th>
             <td>{reportDate}</td>

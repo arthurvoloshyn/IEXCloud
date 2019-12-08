@@ -4,8 +4,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import TableRow from '../TableRow';
 
 class MyTable extends Component {
-  onDragEnd = result => {
-    const { destination, source } = result;
+  onDragEnd = ({ destination, source: { index } }) => {
     const { sortDrag, activePage } = this.props;
 
     if (!destination) {
@@ -13,7 +12,7 @@ class MyTable extends Component {
     }
 
     sortDrag(
-      source.index,
+      index,
       destination.index,
       activePage
     );
@@ -35,10 +34,10 @@ class MyTable extends Component {
             </tr>
           </thead>
           <Droppable droppableId='column-1'>
-            {provided => (
+            {({ droppableProps, innerRef, placeholder }) => (
               <tbody
-                {...provided.droppableProps}
-                ref={provided.innerRef}
+                {...droppableProps}
+                ref={innerRef}
               >
                 {result[activePage - 1].map((item, i) =>
                   <TableRow
@@ -48,7 +47,7 @@ class MyTable extends Component {
                     result={result}
                   />
                 )}
-                {provided.placeholder}
+                {placeholder}
               </tbody>
             )}
           </Droppable>

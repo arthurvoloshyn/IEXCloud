@@ -21,7 +21,7 @@ class Home extends Component {
   }
 
   render() {
-    const { data: { result, loading, error, page }, sortDrag, currentPage, activePage } = this.props;
+    const { data: { result: { financials }, loading, error, page }, sortDrag, currentPage, activePage } = this.props;
 
     return (
       <Container className='mt-5'>
@@ -29,9 +29,9 @@ class Home extends Component {
           {loading ? <Loader /> :
             error ? <p className='loading text-danger'>Error, try again...</p> :
               <div className='content'>
-                {result.financials && result.financials.length &&
+                {financials && financials.length &&
                   <MyTable
-                    result={result.financials}
+                    result={financials}
                     sortDrag={sortDrag}
                     activePage={activePage}
                   />

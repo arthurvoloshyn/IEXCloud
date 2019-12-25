@@ -9,7 +9,17 @@
     "sourceType": "module"
   },
 
-  "extends": ["plugin:jest/recommended"],
+  "extends": [
+    "react-app",
+    "prettier",
+    "standard",
+    "prettier/react",
+    "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors"
+  ],
 
   "env": {
     "es6": true,
@@ -24,7 +34,10 @@
     "promise",
     "standard",
     "react",
-    "jest"
+    "jest",
+    "react-hooks",
+    "babel",
+    "prettier"
   ],
 
   "globals": {
@@ -223,6 +236,8 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
 
-    "jest/expect-expect": 0
+    "jest/expect-expect": 0,
+
+    "prettier/prettier": "error"
   }
 }

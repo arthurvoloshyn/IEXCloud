@@ -1,5 +1,8 @@
-import activePage, { initState } from '../../reducers/activePage';
+import activePage, { BASE_PAGE } from '../../reducers/activePage';
+
 import { CURRENT_PAGE } from '../../consts';
+
+const { activePage: initState } = BASE_PAGE;
 
 describe('activePage reducer', () => {
   it('CURRENT_PAGE', () => {
@@ -8,8 +11,8 @@ describe('activePage reducer', () => {
       number: 1
     };
 
-    expect(activePage(initState, action)).toEqual(
-      action.number
-    );
+    const { number } = action;
+
+    expect(activePage(initState, action)).toEqual(number);
   });
 });

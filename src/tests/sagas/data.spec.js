@@ -1,7 +1,11 @@
 import { put, call, delay, takeLatest, all } from 'redux-saga/effects';
+
 import { requestData, requestDataSuccess } from '../../actions';
+
 import { fetchData } from '../../api';
+
 import rootSaga, { fetchDataAsync, watchFetchData } from '../../sagas/data';
+
 import { FETCHED_DATA } from '../../consts';
 
 describe('Data saga workers', () => {
@@ -50,11 +54,7 @@ describe('Sagas', () => {
     const generator = rootSaga();
     const result = generator.next().value;
     const done = generator.next().done;
-    expect(result).toEqual(
-      all([
-        watchFetchData()
-      ])
-    );
+    expect(result).toEqual(all([watchFetchData()]));
     expect(done).toBeTruthy();
   });
 });

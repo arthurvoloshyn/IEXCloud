@@ -1,33 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 
-class TableRow extends Component {
-  render() {
-    const { result, item, index } = this.props;
-    const { reportDate, totalAssets, totalCash, totalDebt } = item;
-    let number;
+const TableRow = ({ index, number, reportDate, totalAssets, totalCash, totalDebt }) => (
+  <Draggable draggableId={`${number}`} index={number}>
+    {({ draggableProps, innerRef, dragHandleProps }) => (
+      <tr {...draggableProps} ref={innerRef} {...dragHandleProps}>
+        <th scope="row">{index}</th>
+        <td>{reportDate}</td>
+        <td>{totalAssets}</td>
+        <td>{totalCash}</td>
+        <td>{totalDebt}</td>
+      </tr>
+    )}
+  </Draggable>
+);
 
-    result[0].indexOf(item) !== -1 ? number = result[0].indexOf(item) + 1 :
-      number = result[1].indexOf(item) + 11;
+TableRow.propTypes = {
+  reportDate: PropTypes.string,
+  totalAssets: PropTypes.number,
+  totalCash: PropTypes.number,
+  totalDebt: PropTypes.number,
+  number: PropTypes.number,
+  index: PropTypes.number
+};
 
-    return (
-      <Draggable draggableId={String(index)} index={index}>
-        {({ draggableProps, innerRef, dragHandleProps }) => (
-          <tr
-            {...draggableProps}
-            ref={innerRef}
-            {...dragHandleProps}
-          >
-            <th scope='row'>{number}</th>
-            <td>{reportDate}</td>
-            <td>{totalAssets}</td>
-            <td>{totalCash}</td>
-            <td>{totalDebt}</td>
-          </tr>
-        )}
-      </Draggable>
-    );
-  }
-}
+TableRow.defaultProps = {
+  reportDate: '',
+  totalAssets: 0,
+  totalCash: 0,
+  totalDebt: 0,
+  number: 0,
+  index: 0
+};
 
 export default TableRow;

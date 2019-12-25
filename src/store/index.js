@@ -1,18 +1,18 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { save, load } from 'redux-localstorage-simple';
+
 import rootReducer from '../reducers/';
+
 import sagas from '../sagas';
-import { localStorageMiddleware, reHydrateStore } from '../localStorage';
-const persisedState = reHydrateStore();
 
 const sagaMiddleware = createSagaMiddleware();
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+const persistedState = load({ namespace: 'applicationState' });
 
-const store = createStore(
-  rootReducer,
-  persisedState,
-  composeEnhancer(applyMiddleware(sagaMiddleware, localStorageMiddleware))
-);
+const configureStore = preloadedState => createStore(rootReducer, preloadedState, composeEnhancers(applyMiddleware(sagaMiddleware, save({ namespace: 'applicationState' }))));
+
+const store = configureStore(persistedState);
 
 sagaMiddleware.run(sagas);
 

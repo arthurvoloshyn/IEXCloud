@@ -1,4 +1,5 @@
 import { requestData, requestDataError, fetchData, requestDataSuccess, currentPage, sortDrag } from '../../actions';
+
 import { REQUESTED_DATA, REQUESTED_DATA_FAILED, FETCHED_DATA, REQUESTED_DATA_SUCCEEDED, CURRENT_PAGE, DRAG_HAPPEND } from '../../consts';
 
 describe('Data actions', () => {
@@ -7,9 +8,7 @@ describe('Data actions', () => {
       type: REQUESTED_DATA
     };
 
-    expect(requestData()).toEqual(
-      expectedActionRequest
-    );
+    expect(requestData()).toEqual(expectedActionRequest);
   });
 
   it('requestDataSuccess', () => {
@@ -20,9 +19,9 @@ describe('Data actions', () => {
       }
     };
 
-    expect(requestDataSuccess(expectedActionSuccess.result)).toEqual(
-      expectedActionSuccess
-    );
+    const { result } = expectedActionSuccess;
+
+    expect(requestDataSuccess(result)).toEqual(expectedActionSuccess);
   });
 
   it('requestDataError', () => {
@@ -30,9 +29,7 @@ describe('Data actions', () => {
       type: REQUESTED_DATA_FAILED
     };
 
-    expect(requestDataError()).toEqual(
-      expectedActionError
-    );
+    expect(requestDataError()).toEqual(expectedActionError);
   });
 
   it('fetchData', () => {
@@ -40,9 +37,7 @@ describe('Data actions', () => {
       type: FETCHED_DATA
     };
 
-    expect(fetchData()).toEqual(
-      expectedActionFetch
-    );
+    expect(fetchData()).toEqual(expectedActionFetch);
   });
 
   it('sortDrag', () => {
@@ -55,13 +50,11 @@ describe('Data actions', () => {
       }
     };
 
-    expect(sortDrag(
-      expectedActionSortDrag.payload.droppableIndexStart,
-      expectedActionSortDrag.payload.droppableIndexEnd,
-      expectedActionSortDrag.payload.activePage
-    )).toEqual(
-      expectedActionSortDrag
-    );
+    const {
+      payload: { droppableIndexStart, droppableIndexEnd, activePage }
+    } = expectedActionSortDrag;
+
+    expect(sortDrag(droppableIndexStart, droppableIndexEnd, activePage)).toEqual(expectedActionSortDrag);
   });
 
   it('currentPage', () => {
@@ -70,8 +63,8 @@ describe('Data actions', () => {
       number: 1
     };
 
-    expect(currentPage(expectedActionCurrentPage.number)).toEqual(
-      expectedActionCurrentPage
-    );
+    const { number } = expectedActionCurrentPage;
+
+    expect(currentPage(number)).toEqual(expectedActionCurrentPage);
   });
 });

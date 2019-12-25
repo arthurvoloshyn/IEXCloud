@@ -37,7 +37,8 @@
     "jest",
     "react-hooks",
     "babel",
-    "prettier"
+    "prettier",
+    redux-saga
   ],
 
   "globals": {
@@ -238,6 +239,9 @@
 
     "jest/expect-expect": 0,
 
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+
+    "redux-saga/no-yield-in-race": "error",
+    "redux-saga/yield-effects": "error"
   }
 }

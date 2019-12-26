@@ -8,8 +8,8 @@ import { sortDrag, fetchData, currentPage } from '../../actions';
 import Loader from '../../components/Loader';
 import Error from '../../components/Error';
 
-import Table from '../Table';
-import Pagination from '../Pagination';
+import Table from '../../components/Table';
+import Pagination from '../../components/Pagination';
 
 const enhance = connect(({ data, activePage }) => ({ data, activePage }), { fetchData, sortDrag, currentPage });
 

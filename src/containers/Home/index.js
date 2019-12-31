@@ -10,6 +10,7 @@ import Error from '../../components/Error';
 
 import Table from '../../components/Table';
 import Pagination from '../../components/Pagination';
+import EmptyPage from '../../components/EmptyPage';
 
 const enhance = connect(({ data, activePage }) => ({ data, activePage }), { fetchData, sortDrag, currentPage });
 
@@ -37,6 +38,7 @@ class Home extends Component {
 
     const notEmtyTable = financials && financials.length;
     const notEmtyPagination = page && page.length;
+    const isEmtyPage = !notEmtyTable && !notEmtyPagination;
 
     return (
       <Container className="mt-5">
@@ -47,8 +49,9 @@ class Home extends Component {
             <Error />
           ) : (
             <div className="content">
-              {notEmtyTable && <Table result={financials} sortDrag={sortDrag} activePage={activePage} />}
-              {notEmtyPagination && <Pagination currentPage={currentPage} activePage={activePage} pages={page} />}
+              {notEmtyTable ? <Table result={financials} sortDrag={sortDrag} activePage={activePage} /> : null}
+              {notEmtyPagination ? <Pagination currentPage={currentPage} activePage={activePage} pages={page} /> : null}
+              {isEmtyPage && <EmptyPage />}
             </div>
           )}
         </Row>

@@ -31,7 +31,7 @@ TableRow.defaultProps = {
   totalCash: 0,
   totalDebt: 0,
   number: 0,
-  index: 0
+  index: 1
 };
 
 export default TableRow;

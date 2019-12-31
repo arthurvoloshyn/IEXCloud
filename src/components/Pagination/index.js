@@ -10,25 +10,23 @@ const MyPagination = ({ pages, activePage, currentPage }) => {
 
   return (
     <div>
-      {pages.length && (
-        <Pagination>
-          <PaginationItem disabled={isFirstPage}>
-            <PaginationLink onClick={() => currentPage(pages[0])} first />
-          </PaginationItem>
-          <PaginationItem disabled={isFirstPage}>
-            <PaginationLink onClick={() => currentPage(activePage - 1)} previous />
-          </PaginationItem>
-          {pages.map(number => (
-            <PaginationElement key={number} number={number} activePage={activePage} changePage={() => currentPage(number)} />
-          ))}
-          <PaginationItem disabled={isLastPage}>
-            <PaginationLink onClick={() => currentPage(activePage + 1)} next />
-          </PaginationItem>
-          <PaginationItem disabled={isLastPage}>
-            <PaginationLink onClick={() => currentPage(pages[pages.length - 1])} last />
-          </PaginationItem>
-        </Pagination>
-      )}
+      <Pagination>
+        <PaginationItem disabled={isFirstPage}>
+          <PaginationLink onClick={() => currentPage(pages[0])} first />
+        </PaginationItem>
+        <PaginationItem disabled={isFirstPage}>
+          <PaginationLink onClick={() => currentPage(activePage - 1)} previous />
+        </PaginationItem>
+        {pages.map(number => (
+          <PaginationElement key={number} number={number} activePage={activePage} changePage={() => currentPage(number)} />
+        ))}
+        <PaginationItem disabled={isLastPage}>
+          <PaginationLink onClick={() => currentPage(activePage + 1)} next />
+        </PaginationItem>
+        <PaginationItem disabled={isLastPage}>
+          <PaginationLink onClick={() => currentPage(pages[pages.length - 1])} last />
+        </PaginationItem>
+      </Pagination>
     </div>
   );
 };

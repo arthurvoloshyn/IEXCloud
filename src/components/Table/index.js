@@ -52,13 +52,12 @@ const MyTable = ({ sortDrag, result, activePage }) => {
 
 MyTable.propTypes = {
   sortDrag: PropTypes.func,
-  result: PropTypes.array,
+  result: PropTypes.array.isRequired,
   activePage: PropTypes.number
 };
 
 MyTable.defaultProps = {
   sortDrag: () => {},
-  result: [],
   activePage: 1
 };
 

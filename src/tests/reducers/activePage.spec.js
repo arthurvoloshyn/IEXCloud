@@ -1,18 +1,18 @@
 import activePage, { BASE_PAGE } from '../../reducers/activePage';
 
-import { CURRENT_PAGE } from '../../consts';
+import { CHANGE_PAGE } from '../../consts';
 
 const { activePage: initState } = BASE_PAGE;
 
 describe('activePage reducer', () => {
-  it('CURRENT_PAGE', () => {
+  it('CHANGE_PAGE', () => {
     const action = {
-      type: CURRENT_PAGE,
-      number: 1
+      type: CHANGE_PAGE,
+      page: 1
     };
 
-    const { number } = action;
+    const { page } = action;
 
-    expect(activePage(initState, action)).toEqual(number);
+    expect(activePage(initState, action)).toEqual(page);
   });
 });

@@ -18,7 +18,7 @@ const MyTable = ({ sortDrag, result, activePage }) => {
     sortDrag(index, destinationIndex, activePage);
   };
 
-  const currentIndex = activePage - 1;
+  const currentPageIndex = activePage - 1;
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -35,11 +35,11 @@ const MyTable = ({ sortDrag, result, activePage }) => {
         <Droppable droppableId="tbody">
           {({ droppableProps, innerRef, placeholder }) => (
             <tbody {...droppableProps} ref={innerRef}>
-              {result[currentIndex].map((item, i) => {
+              {result[currentPageIndex].map((item, i) => {
                 const { reportDate, totalAssets, totalCash, totalDebt } = item;
                 const index = getIndex(result, item);
 
-                return <TableRow key={i} index={index} number={i} reportDate={reportDate} totalAssets={totalAssets} totalCash={totalCash} totalDebt={totalDebt} />;
+                return <TableRow key={i} index={index} id={i} reportDate={reportDate} totalAssets={totalAssets} totalCash={totalCash} totalDebt={totalDebt} />;
               })}
               {placeholder}
             </tbody>

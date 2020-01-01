@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Row } from 'reactstrap';
 
-import { sortDrag, fetchData, currentPage } from '../../actions';
+import { sortDrag, fetchData, changePage } from '../../actions';
 
 import Loader from '../../components/Loader';
 import Error from '../../components/Error';
@@ -12,7 +12,7 @@ import Table from '../../components/Table';
 import Pagination from '../../components/Pagination';
 import EmptyPage from '../../components/EmptyPage';
 
-const enhance = connect(({ data, activePage }) => ({ data, activePage }), { fetchData, sortDrag, currentPage });
+const enhance = connect(({ data, activePage }) => ({ data, activePage }), { fetchData, sortDrag, changePage });
 
 class Home extends Component {
   componentDidMount() {
@@ -29,15 +29,15 @@ class Home extends Component {
         result: { financials = [] },
         loading,
         error,
-        page = []
+        pages = []
       },
       sortDrag,
-      currentPage,
+      changePage,
       activePage
     } = this.props;
 
     const notEmtyTable = financials && financials.length;
-    const notEmtyPagination = page && page.length;
+    const notEmtyPagination = pages && pages.length;
     const isEmtyPage = !notEmtyTable && !notEmtyPagination;
 
     return (
@@ -50,7 +50,7 @@ class Home extends Component {
           ) : (
             <div className="content">
               {notEmtyTable ? <Table result={financials} sortDrag={sortDrag} activePage={activePage} /> : null}
-              {notEmtyPagination ? <Pagination currentPage={currentPage} activePage={activePage} pages={page} /> : null}
+              {notEmtyPagination ? <Pagination changePage={changePage} activePage={activePage} pages={pages} /> : null}
               {isEmtyPage && <EmptyPage />}
             </div>
           )}
@@ -64,14 +64,14 @@ Home.propTypes = {
   data: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.bool,
-    page: PropTypes.array,
+    pages: PropTypes.array,
     result: PropTypes.shape({
       financials: PropTypes.array
     })
   }),
   fetchData: PropTypes.func,
   sortDrag: PropTypes.func,
-  currentPage: PropTypes.func,
+  changePage: PropTypes.func,
   activePage: PropTypes.number
 };
 
@@ -79,14 +79,14 @@ Home.defaultProps = {
   data: {
     loading: false,
     error: false,
-    page: [],
+    pages: [],
     result: {
       financials: []
     }
   },
   fetchData: () => {},
   sortDrag: () => {},
-  currentPage: () => {},
+  changePage: () => {},
   activePage: 1
 };
 

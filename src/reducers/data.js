@@ -12,7 +12,7 @@ if (!BASE_DATA || !BASE_DATA.data || !BASE_DATA.data.length) {
       result: {},
       loading: false,
       error: false,
-      page: []
+      pages: []
     }
   };
 }
@@ -24,13 +24,13 @@ export default (state = BASE_DATA.data, { type, result, payload }) => {
         result: {},
         loading: true,
         error: false,
-        page: []
+        pages: []
       };
     }
     case REQUESTED_DATA_SUCCEEDED: {
-      const { financials: res } = result;
-      const financials = chunkArray(res, DATA_PER_PAGE);
-      const page = getPages(financials);
+      const { financials: data } = result;
+      const financials = chunkArray(data, DATA_PER_PAGE);
+      const pages = getPages(financials);
 
       return {
         result: {
@@ -39,7 +39,7 @@ export default (state = BASE_DATA.data, { type, result, payload }) => {
         },
         loading: false,
         error: false,
-        page
+        pages
       };
     }
     case REQUESTED_DATA_FAILED: {
@@ -47,21 +47,21 @@ export default (state = BASE_DATA.data, { type, result, payload }) => {
         result: {},
         loading: false,
         error: true,
-        page: []
+        pages: []
       };
     }
     case DRAG_HAPPEND: {
       const { droppableIndexStart, droppableIndexEnd, activePage } = payload;
-      const { result: newState } = state;
-      const { financials: res } = newState;
-      const currentIndex = activePage - 1;
+      const { result } = state;
+      const { financials: data } = result;
+      const currentPageIndex = activePage - 1;
 
-      const financials = dragging(droppableIndexStart, droppableIndexEnd, res, currentIndex);
+      const financials = dragging(droppableIndexStart, droppableIndexEnd, data, currentPageIndex);
 
       return {
         ...state,
         result: {
-          ...newState,
+          ...result,
           financials
         }
       };

@@ -1,6 +1,6 @@
 export const getIndex = (items, item) => {
-  const rows = items.flat();
-  const index = rows.indexOf(item) + 1;
+  const flatItems = items.flat();
+  const index = flatItems.indexOf(item) + 1;
 
   return index;
 };
@@ -27,10 +27,10 @@ export const getPages = list => {
   return pages;
 };
 
-export const dragging = (droppableIndexStart, droppableIndexEnd, financials, currentIndex) => {
+export const dragging = (droppableIndexStart, droppableIndexEnd, financials, currentPageIndex) => {
   if (droppableIndexStart !== droppableIndexEnd) {
-    const list = financials[currentIndex].splice(droppableIndexStart, 1);
-    financials[currentIndex].splice(droppableIndexEnd, 0, ...list);
+    const list = financials[currentPageIndex].splice(droppableIndexStart, 1);
+    financials[currentPageIndex].splice(droppableIndexEnd, 0, ...list);
   }
 
   return financials;

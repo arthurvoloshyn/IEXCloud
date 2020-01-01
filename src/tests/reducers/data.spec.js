@@ -16,7 +16,7 @@ describe('Data reducer', () => {
       result: {},
       loading: true,
       error: false,
-      page: []
+      pages: []
     };
 
     expect(data(initialState, action)).toEqual(expectedReducerRequested);
@@ -27,7 +27,7 @@ describe('Data reducer', () => {
       result: {},
       loading: false,
       error: true,
-      page: []
+      pages: []
     };
 
     const action = {
@@ -38,7 +38,7 @@ describe('Data reducer', () => {
       result: {},
       loading: true,
       error: false,
-      page: []
+      pages: []
     };
 
     expect(data(initialStateWithError, action)).toEqual(expectedReducerRequested);
@@ -49,7 +49,7 @@ describe('Data reducer', () => {
       result: {},
       loading: true,
       error: false,
-      page: []
+      pages: []
     };
 
     const action = {
@@ -61,7 +61,7 @@ describe('Data reducer', () => {
 
     const financials = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     const chunkedFinancials = chunkArray(financials, DATA_PER_PAGE);
-    const page = getPages(chunkedFinancials);
+    const pages = getPages(chunkedFinancials);
 
     const expectedReducerSucceeded = {
       result: {
@@ -69,7 +69,7 @@ describe('Data reducer', () => {
       },
       loading: false,
       error: false,
-      page
+      pages
     };
 
     expect(data(stateBeforeSuccess, action)).toEqual(expectedReducerSucceeded);
@@ -81,7 +81,7 @@ describe('Data reducer', () => {
       result: {},
       loading: true,
       error: false,
-      page: []
+      pages: []
     };
     /* eslint-enable */
 
@@ -93,7 +93,7 @@ describe('Data reducer', () => {
       result: {},
       loading: false,
       error: true,
-      page: []
+      pages: []
     };
 
     expect(data(initialState, action)).toEqual(expectedReducerFailed);
@@ -109,7 +109,7 @@ describe('Data reducer', () => {
       },
       loading: false,
       error: false,
-      page: [1, 2]
+      pages: [1, 2]
     };
 
     const action = {
@@ -121,7 +121,7 @@ describe('Data reducer', () => {
       }
     };
 
-    const { page } = initialStateWithoutDrag;
+    const { pages } = initialStateWithoutDrag;
 
     const expectedReducerDrag = {
       result: {
@@ -132,7 +132,7 @@ describe('Data reducer', () => {
       },
       loading: false,
       error: false,
-      page
+      pages
     };
 
     expect(data(initialStateWithoutDrag, action)).toEqual(expectedReducerDrag);

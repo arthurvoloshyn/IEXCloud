@@ -1,6 +1,6 @@
-import { requestData, requestDataError, fetchData, requestDataSuccess, currentPage, sortDrag } from '../../actions';
+import { requestData, requestDataError, fetchData, requestDataSuccess, changePage, sortDrag } from '../../actions';
 
-import { REQUESTED_DATA, REQUESTED_DATA_FAILED, FETCHED_DATA, REQUESTED_DATA_SUCCEEDED, CURRENT_PAGE, DRAG_HAPPEND } from '../../consts';
+import { REQUESTED_DATA, REQUESTED_DATA_FAILED, FETCHED_DATA, REQUESTED_DATA_SUCCEEDED, CHANGE_PAGE, DRAG_HAPPEND } from '../../consts';
 
 describe('Data actions', () => {
   it('requestData', () => {
@@ -57,14 +57,14 @@ describe('Data actions', () => {
     expect(sortDrag(droppableIndexStart, droppableIndexEnd, activePage)).toEqual(expectedActionSortDrag);
   });
 
-  it('currentPage', () => {
+  it('changePage', () => {
     const expectedActionCurrentPage = {
-      type: CURRENT_PAGE,
-      number: 1
+      type: CHANGE_PAGE,
+      page: 1
     };
 
-    const { number } = expectedActionCurrentPage;
+    const { page } = expectedActionCurrentPage;
 
-    expect(currentPage(number)).toEqual(expectedActionCurrentPage);
+    expect(changePage(page)).toEqual(expectedActionCurrentPage);
   });
 });

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from 'react-beautiful-dnd';
 
-const TableRow = ({ index, number, reportDate, totalAssets, totalCash, totalDebt }) => (
-  <Draggable draggableId={`${number}`} index={number}>
+const TableRow = ({ index, id, reportDate, totalAssets, totalCash, totalDebt }) => (
+  <Draggable draggableId={`${id}`} index={id}>
     {({ draggableProps, innerRef, dragHandleProps }) => (
       <tr {...draggableProps} ref={innerRef} {...dragHandleProps}>
         <th scope="row">{index}</th>
@@ -21,7 +21,7 @@ TableRow.propTypes = {
   totalAssets: PropTypes.number,
   totalCash: PropTypes.number,
   totalDebt: PropTypes.number,
-  number: PropTypes.number,
+  id: PropTypes.number,
   index: PropTypes.number
 };
 
@@ -30,7 +30,7 @@ TableRow.defaultProps = {
   totalAssets: 0,
   totalCash: 0,
   totalDebt: 0,
-  number: 0,
+  id: 0,
   index: 1
 };
 

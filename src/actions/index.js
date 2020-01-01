@@ -1,4 +1,4 @@
-import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, FETCHED_DATA, DRAG_HAPPEND, CURRENT_PAGE } from '../consts';
+import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, FETCHED_DATA, DRAG_HAPPEND, CHANGE_PAGE } from '../consts';
 
 export const requestData = () => ({ type: REQUESTED_DATA });
 export const requestDataSuccess = result => ({ type: REQUESTED_DATA_SUCCEEDED, result });
@@ -14,4 +14,4 @@ export const sortDrag = (droppableIndexStart, droppableIndexEnd, activePage) => 
   }
 });
 
-export const currentPage = number => ({ type: CURRENT_PAGE, number });
+export const changePage = page => ({ type: CHANGE_PAGE, page });

@@ -6,7 +6,7 @@ import { chunkArray, getPages, dragging } from '../utils';
 
 export let BASE_DATA = load({ namespace: 'applicationState' });
 
-if (!BASE_DATA || !BASE_DATA.data || !BASE_DATA.data.length) {
+if (!BASE_DATA || !BASE_DATA.data || !BASE_DATA.data.result) {
   BASE_DATA = {
     data: {
       result: {},

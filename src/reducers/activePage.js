@@ -4,7 +4,7 @@ import { CHANGE_PAGE } from '../consts';
 
 export let BASE_PAGE = load({ namespace: 'applicationState' });
 
-if (!BASE_PAGE || !BASE_PAGE.activePage || !BASE_PAGE.activePage.length) {
+if (!BASE_PAGE || !BASE_PAGE.activePage) {
   BASE_PAGE = {
     activePage: 1
   };

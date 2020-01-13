@@ -1,8 +1,6 @@
-import activePage, { BASE_PAGE } from '../../reducers/activePage';
+import activePage, { initState } from '../../reducers/activePage';
 
 import { CHANGE_PAGE } from '../../consts';
-
-const { activePage: initState } = BASE_PAGE;
 
 describe('activePage reducer', () => {
   it('CHANGE_PAGE', () => {

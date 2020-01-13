@@ -1,10 +1,8 @@
-import data, { BASE_DATA } from '../../reducers/data';
+import data, { initState } from '../../reducers/data';
 
 import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, DRAG_HAPPEND, DATA_PER_PAGE } from '../../consts';
 
 import { chunkArray, getPages } from '../../utils';
-
-const { data: initialState } = BASE_DATA;
 
 describe('Data reducer', () => {
   it('REQUESTED_DATA after situation without error', () => {
@@ -19,7 +17,7 @@ describe('Data reducer', () => {
       pages: []
     };
 
-    expect(data(initialState, action)).toEqual(expectedReducerRequested);
+    expect(data(initState, action)).toEqual(expectedReducerRequested);
   });
 
   it('REQUESTED_DATA after error', () => {
@@ -96,7 +94,7 @@ describe('Data reducer', () => {
       pages: []
     };
 
-    expect(data(initialState, action)).toEqual(expectedReducerFailed);
+    expect(data(initState, action)).toEqual(expectedReducerFailed);
   });
 
   it('DRAG_HAPPEND', () => {

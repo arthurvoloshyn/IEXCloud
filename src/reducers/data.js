@@ -1,23 +1,15 @@
-import { load } from 'redux-localstorage-simple';
-
 import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, DATA_PER_PAGE, DRAG_HAPPEND } from '../consts';
 
 import { chunkArray, getPages, dragging } from '../utils';
 
-export let BASE_DATA = load({ namespace: 'applicationState' });
+export const initState = {
+  result: {},
+  loading: false,
+  error: false,
+  page: []
+};
 
-if (!BASE_DATA || !BASE_DATA.data || !BASE_DATA.data.result) {
-  BASE_DATA = {
-    data: {
-      result: {},
-      loading: false,
-      error: false,
-      pages: []
-    }
-  };
-}
-
-export default (state = BASE_DATA.data, { type, result, payload }) => {
+export default (state = initState, { type, result, payload }) => {
   switch (type) {
     case REQUESTED_DATA: {
       return {

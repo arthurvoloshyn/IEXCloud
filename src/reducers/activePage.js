@@ -1,16 +1,8 @@
-import { load } from 'redux-localstorage-simple';
-
 import { CHANGE_PAGE } from '../consts';
 
-export let BASE_PAGE = load({ namespace: 'applicationState' });
+export const initState = 1;
 
-if (!BASE_PAGE || !BASE_PAGE.activePage) {
-  BASE_PAGE = {
-    activePage: 1
-  };
-}
-
-export default (state = BASE_PAGE.activePage, { type, page }) => {
+export default (state = initState, { type, page }) => {
   switch (type) {
     case CHANGE_PAGE:
       return page;

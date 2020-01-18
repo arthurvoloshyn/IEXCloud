@@ -58,7 +58,8 @@ export default (state = initState, { type, result, payload }) => {
         }
       };
     }
-    default:
+    default: {
       return state;
+    }
   }
 };

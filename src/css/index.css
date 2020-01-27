@@ -23,6 +23,10 @@ code {
   transform: translate(-50%, -50%);
 }
 
+.table-responsive {
+  margin-bottom: 1rem;
+}
+
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.02);
 }
@@ -97,11 +101,5 @@ code {
 
   30% {
     transform: translateY(-5px);
-  }
-}
-
-@media (max-width: 557px) {
-  .content nav[aria-label='pagination'] {
-    margin-top: 15px;
   }
 }

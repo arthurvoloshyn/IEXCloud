@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b46da72953400cc194a03224661537fd",
+    "revision": "0133a7de8e81ae23520f90e920ccb48c",
     "url": "/IEXCloud/index.html"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/IEXCloud/static/css/2.17e5ed98.chunk.css"
   },
   {
-    "revision": "7beae7d5f560a9fb93c7",
-    "url": "/IEXCloud/static/css/main.e67a1dc1.chunk.css"
+    "revision": "917b260f60d48461ba38",
+    "url": "/IEXCloud/static/css/main.9acfb104.chunk.css"
   },
   {
     "revision": "dfb151b36985163fed81",
     "url": "/IEXCloud/static/js/2.ea3dbfa2.chunk.js"
   },
   {
-    "revision": "7beae7d5f560a9fb93c7",
+    "revision": "917b260f60d48461ba38",
     "url": "/IEXCloud/static/js/main.9d7ca60c.chunk.js"
   },
   {

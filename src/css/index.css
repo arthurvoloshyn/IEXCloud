@@ -10,7 +10,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-div.spinner-border {
+.spinner-border {
   height: 3rem;
   width: 3rem;
 }
@@ -43,22 +43,31 @@ div.spinner-border {
   vertical-align: middle;
 }
 
-div.content > div nav[aria-label='pagination'] {
+.content nav[aria-label='pagination'] {
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
-div.content {
+.content {
   height: auto;
   width: 100%;
 }
 
-li.page-item.disabled:hover {
+.page-item.disabled {
   cursor: not-allowed;
 }
 
-span#wave {
+.page-link {
+  padding: 0.75rem 1.125rem;
+}
+
+.pagination {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+}
+
+#wave {
   margin-left: 1px;
 }
 
@@ -91,8 +100,8 @@ span#wave {
   }
 }
 
-@media (max-width: 514px) {
-  nav[aria-label='pagination'] {
+@media (max-width: 557px) {
+  .content nav[aria-label='pagination'] {
     margin-top: 15px;
   }
 }

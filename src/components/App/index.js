@@ -9,7 +9,7 @@ import HomePage from '../../containers/Home';
 
 const App = () => (
   <Provider store={store}>
-    <Router basename="/IexcloudReactApi/">
+    <Router basename="/IEXCloud/">
       <Switch>
         <Route exact path="/" component={HomePage} />
       </Switch>

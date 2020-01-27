@@ -1,12 +1,10 @@
 import React from 'react';
-import { Jumbotron, Container } from 'reactstrap';
+import { Col } from 'reactstrap';
 
 const EmptyPage = () => (
-  <Jumbotron fluid>
-    <Container className="themed-container" fluid>
-      <h1 className="display-3 text-center">Page is empty</h1>
-    </Container>
-  </Jumbotron>
+  <Col xs="12" sm={{ size: 10, offset: 1 }} md={{ size: 8, offset: 2 }} lg={{ size: 6, offset: 3 }}>
+    <h1 className="display-3 text-center">Page is empty</h1>
+  </Col>
 );
 
 export default EmptyPage;

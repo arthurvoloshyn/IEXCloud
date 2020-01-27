@@ -41,7 +41,7 @@ class Home extends Component {
     const isEmtyPage = !notEmtyTable && !notEmtyPagination;
 
     return (
-      <Container className="mt-5">
+      <Container className="mt-5" fluid="md">
         <Row>
           {loading ? (
             <Loader />

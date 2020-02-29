@@ -13,3 +13,19 @@ const ENDPOINT_PATH = '/stock/AAPL/financials/12';
 const QUERY_PARAM = 'token=';
 const API_KEY = 'Tpk_d232dd87ed34407dacc92eee1edbf407';
 export const URL = `${BASE_PATH}${ENDPOINT_PATH}?${QUERY_PARAM}${API_KEY}`;
+
+export const localStorageKey = 'applicationState';
+export const localStorageData = localStorage[localStorageKey];
+
+export const emptyPageSizes = {
+  xs: 12,
+  sm: { size: 10, offset: 1 },
+  md: { size: 8, offset: 2 },
+  lg: { size: 6, offset: 3 }
+};
+
+export const dotsList = [
+  { id: 1, baseClassName: 'dot' },
+  { id: 2, baseClassName: 'dot' },
+  { id: 3, baseClassName: 'dot' }
+];

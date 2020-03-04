@@ -18,7 +18,8 @@
     "plugin:jest/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:import/errors"
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
 
   "env": {
@@ -38,7 +39,7 @@
     "react-hooks",
     "babel",
     "prettier",
-    redux-saga
+    "redux-saga"
   ],
 
   "globals": {
@@ -187,7 +188,7 @@
     "no-with": "error",
     "object-curly-spacing": ["error", "always"],
     "object-property-newline": ["error", { "allowMultiplePropertiesPerLine": true }],
-    "one-var": ["error", { separateRequires: true, var: "never", "let": "never" }],
+    "one-var": ["error", { "separateRequires": true, "var": "never", "let": "never" }],
     "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "after" } }],
     "padded-blocks": ["error", { "blocks": "never", "switches": "never", "classes": "never" }],
     "prefer-promise-reject-errors": "error",

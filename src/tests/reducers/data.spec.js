@@ -1,8 +1,6 @@
 import data, { initState } from '../../reducers/data';
 
-import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, DRAG_HAPPEND, DATA_PER_PAGE } from '../../consts';
-
-import { chunkArray, getPages } from '../../utils';
+import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, DRAG_HAPPEND } from '../../consts';
 
 describe('Data reducer', () => {
   it('REQUESTED_DATA after situation without error', () => {
@@ -13,8 +11,7 @@ describe('Data reducer', () => {
     const expectedReducerRequested = {
       result: {},
       loading: true,
-      error: false,
-      pages: []
+      error: false
     };
 
     expect(data(initState, action)).toEqual(expectedReducerRequested);
@@ -24,8 +21,7 @@ describe('Data reducer', () => {
     const initialStateWithError = {
       result: {},
       loading: false,
-      error: true,
-      pages: []
+      error: true
     };
 
     const action = {
@@ -35,8 +31,7 @@ describe('Data reducer', () => {
     const expectedReducerRequested = {
       result: {},
       loading: true,
-      error: false,
-      pages: []
+      error: false
     };
 
     expect(data(initialStateWithError, action)).toEqual(expectedReducerRequested);
@@ -46,28 +41,29 @@ describe('Data reducer', () => {
     const stateBeforeSuccess = {
       result: {},
       loading: true,
-      error: false,
-      pages: []
+      error: false
     };
 
     const action = {
       type: REQUESTED_DATA_SUCCEEDED,
       result: {
-        financials: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        financials: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+        symbol: 'APPL'
       }
     };
 
-    const financials = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-    const chunkedFinancials = chunkArray(financials, DATA_PER_PAGE);
-    const pages = getPages(chunkedFinancials);
+    const { symbol } = action.result;
 
     const expectedReducerSucceeded = {
       result: {
-        financials: chunkedFinancials
+        financials: [
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+          [11, 12]
+        ],
+        symbol
       },
       loading: false,
-      error: false,
-      pages
+      error: false
     };
 
     expect(data(stateBeforeSuccess, action)).toEqual(expectedReducerSucceeded);
@@ -78,8 +74,7 @@ describe('Data reducer', () => {
     const stateBeforeError = {
       result: {},
       loading: true,
-      error: false,
-      pages: []
+      error: false
     };
     /* eslint-enable */
 
@@ -90,8 +85,7 @@ describe('Data reducer', () => {
     const expectedReducerFailed = {
       result: {},
       loading: false,
-      error: true,
-      pages: []
+      error: true
     };
 
     expect(data(initState, action)).toEqual(expectedReducerFailed);
@@ -103,34 +97,32 @@ describe('Data reducer', () => {
         financials: [
           [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
           [11, 12]
-        ]
+        ],
+        pages: [1, 2]
       },
       loading: false,
-      error: false,
-      pages: [1, 2]
+      error: false
     };
 
     const action = {
       type: DRAG_HAPPEND,
-      payload: {
-        droppableIndexStart: 0,
-        droppableIndexEnd: 1,
-        activePage: 1
-      }
+      droppableIndexStart: 0,
+      droppableIndexEnd: 1,
+      currentPageIndex: 0
     };
 
-    const { pages } = initialStateWithoutDrag;
+    const { pages } = initialStateWithoutDrag.result;
 
     const expectedReducerDrag = {
       result: {
         financials: [
           [2, 1, 3, 4, 5, 6, 7, 8, 9, 10],
           [11, 12]
-        ]
+        ],
+        pages
       },
       loading: false,
-      error: false,
-      pages
+      error: false
     };
 
     expect(data(initialStateWithoutDrag, action)).toEqual(expectedReducerDrag);

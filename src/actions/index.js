@@ -5,13 +5,11 @@ export const requestDataSuccess = result => ({ type: REQUESTED_DATA_SUCCEEDED, r
 export const requestDataError = () => ({ type: REQUESTED_DATA_FAILED });
 export const fetchData = () => ({ type: FETCHED_DATA });
 
-export const sortDrag = (droppableIndexStart, droppableIndexEnd, activePage) => ({
+export const sortDrag = (droppableIndexStart, droppableIndexEnd, currentPageIndex) => ({
   type: DRAG_HAPPEND,
-  payload: {
-    droppableIndexStart,
-    droppableIndexEnd,
-    activePage
-  }
+  droppableIndexStart,
+  droppableIndexEnd,
+  currentPageIndex
 });
 
 export const changePage = page => ({ type: CHANGE_PAGE, page });

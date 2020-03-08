@@ -43,18 +43,14 @@ describe('Data actions', () => {
   it('sortDrag', () => {
     const expectedActionSortDrag = {
       type: DRAG_HAPPEND,
-      payload: {
-        droppableIndexStart: 0,
-        droppableIndexEnd: 1,
-        activePage: 1
-      }
+      droppableIndexStart: 0,
+      droppableIndexEnd: 1,
+      currentPageIndex: 1
     };
 
-    const {
-      payload: { droppableIndexStart, droppableIndexEnd, activePage }
-    } = expectedActionSortDrag;
+    const { droppableIndexStart, droppableIndexEnd, currentPageIndex } = expectedActionSortDrag;
 
-    expect(sortDrag(droppableIndexStart, droppableIndexEnd, activePage)).toEqual(expectedActionSortDrag);
+    expect(sortDrag(droppableIndexStart, droppableIndexEnd, currentPageIndex)).toEqual(expectedActionSortDrag);
   });
 
   it('changePage', () => {

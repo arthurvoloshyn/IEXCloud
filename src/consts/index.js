@@ -8,11 +8,12 @@ export const DRAG_HAPPEND = 'DRAG_HAPPEND';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const DATA_PER_PAGE = 10;
 
+const STOCKS_COUNT = 12;
 const BASE_PATH = 'https://sandbox.iexapis.com/stable';
-const ENDPOINT_PATH = '/stock/AAPL/financials/12';
+const ENDPOINT_PATH = '/stock/AAPL/financials/';
 const QUERY_PARAM = 'token=';
 const API_KEY = 'Tpk_d232dd87ed34407dacc92eee1edbf407';
-export const URL = `${BASE_PATH}${ENDPOINT_PATH}?${QUERY_PARAM}${API_KEY}`;
+export const URL = `${BASE_PATH}${ENDPOINT_PATH}${STOCKS_COUNT}?${QUERY_PARAM}${API_KEY}`;
 
 export const localStorageKey = 'applicationState';
 export const localStorageData = localStorage[localStorageKey];

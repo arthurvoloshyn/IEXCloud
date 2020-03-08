@@ -5,8 +5,8 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import PaginationElement from '../PaginationElement';
 
 const MyPagination = ({ pages, activePage, changePage }) => {
-  const isFirstPage = activePage === 1 && true;
-  const isLastPage = activePage === pages[pages.length - 1] && true;
+  const isFirstPage = activePage === 1;
+  const isLastPage = activePage === pages[pages.length - 1];
 
   return (
     <Pagination>

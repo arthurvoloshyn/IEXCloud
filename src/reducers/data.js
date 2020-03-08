@@ -1,28 +1,24 @@
-import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, DATA_PER_PAGE, DRAG_HAPPEND } from '../consts';
+import { REQUESTED_DATA, REQUESTED_DATA_SUCCEEDED, REQUESTED_DATA_FAILED, DRAG_HAPPEND, DATA_PER_PAGE } from '../consts';
 
-import { chunkArray, getPages, dragging } from '../utils';
+import { chunkArray, dragging } from '../utils';
 
 export const initState = {
   result: {},
   loading: false,
-  error: false,
-  page: []
+  error: false
 };
 
-export default (state = initState, { type, result, payload }) => {
+export default (state = initState, { type, result, droppableIndexStart, droppableIndexEnd, currentPageIndex }) => {
   switch (type) {
     case REQUESTED_DATA: {
       return {
         result: {},
         loading: true,
-        error: false,
-        pages: []
+        error: false
       };
     }
     case REQUESTED_DATA_SUCCEEDED: {
-      const { financials: data } = result;
-      const financials = chunkArray(data, DATA_PER_PAGE);
-      const pages = getPages(financials);
+      const financials = chunkArray(result.financials, DATA_PER_PAGE);
 
       return {
         result: {
@@ -30,30 +26,23 @@ export default (state = initState, { type, result, payload }) => {
           financials
         },
         loading: false,
-        error: false,
-        pages
+        error: false
       };
     }
     case REQUESTED_DATA_FAILED: {
       return {
         result: {},
         loading: false,
-        error: true,
-        pages: []
+        error: true
       };
     }
     case DRAG_HAPPEND: {
-      const { droppableIndexStart, droppableIndexEnd, activePage } = payload;
-      const { result } = state;
-      const { financials: data } = result;
-      const currentPageIndex = activePage - 1;
-
-      const financials = dragging(droppableIndexStart, droppableIndexEnd, data, currentPageIndex);
+      const financials = dragging(droppableIndexStart, droppableIndexEnd, state.result.financials, currentPageIndex);
 
       return {
         ...state,
         result: {
-          ...result,
+          ...state.result,
           financials
         }
       };

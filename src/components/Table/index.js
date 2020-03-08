@@ -8,17 +8,17 @@ import { getIndex } from '../../utils';
 import TableRow from '../TableRow';
 
 const MyTable = ({ sortDrag, result, activePage }) => {
-  const onDragEnd = ({ destination, source: { index } }) => {
+  const currentPageIndex = activePage - 1;
+
+  const onDragEnd = ({ destination, source: { index: droppableIndexStart } }) => {
     if (!destination) {
       return;
     }
 
-    const { index: destinationIndex } = destination;
+    const { index: droppableIndexEnd } = destination;
 
-    sortDrag(index, destinationIndex, activePage);
+    sortDrag(droppableIndexStart, droppableIndexEnd, currentPageIndex);
   };
-
-  const currentPageIndex = activePage - 1;
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>

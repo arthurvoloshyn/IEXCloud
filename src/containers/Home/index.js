@@ -7,6 +7,8 @@ import { localStorageData } from '../../consts';
 
 import { sortDrag, fetchData, changePage } from '../../actions';
 
+import { getPages } from '../../utils';
+
 import Loader from '../../components/Loader';
 import Error from '../../components/Error';
 
@@ -21,9 +23,9 @@ class Home extends Component {
     data: PropTypes.shape({
       loading: PropTypes.bool,
       error: PropTypes.bool,
-      pages: PropTypes.array,
       result: PropTypes.shape({
-        financials: PropTypes.array
+        financials: PropTypes.array,
+        symbol: PropTypes.string
       })
     }),
     fetchData: PropTypes.func,
@@ -36,9 +38,9 @@ class Home extends Component {
     data: {
       loading: false,
       error: false,
-      pages: [],
       result: {
-        financials: []
+        financials: [],
+        symbol: ''
       }
     },
     fetchData: () => {},
@@ -58,22 +60,19 @@ class Home extends Component {
   render() {
     const {
       data: {
-        result: { financials = [] },
+        result: { financials = [], symbol },
         loading,
-        error,
-        pages = []
+        error
       },
       sortDrag,
       changePage,
       activePage
     } = this.props;
 
-    const notEmtyTable = financials && financials.length;
-    const notEmtyPagination = pages && pages.length;
-    const isEmtyPage = !notEmtyTable && !notEmtyPagination;
+    const pages = getPages(financials);
 
     return (
-      <Container className="mt-5" fluid="md">
+      <Container className="mt-3" fluid="md">
         <Row>
           {loading ? (
             <Loader />
@@ -81,9 +80,15 @@ class Home extends Component {
             <Error />
           ) : (
             <div className="content">
-              {notEmtyTable ? <Table result={financials} sortDrag={sortDrag} activePage={activePage} /> : null}
-              {notEmtyPagination ? <Pagination changePage={changePage} activePage={activePage} pages={pages} /> : null}
-              {isEmtyPage && <EmptyPage />}
+              {financials.length ? (
+                <>
+                  <h1 className="text-center mb-3">Symbol: {symbol}</h1>
+                  <Table result={financials} sortDrag={sortDrag} activePage={activePage} />
+                  <Pagination changePage={changePage} activePage={activePage} pages={pages} />
+                </>
+              ) : (
+                <EmptyPage />
+              )}
             </div>
           )}
         </Row>

@@ -20,9 +20,7 @@ export const chunkArray = (myArray, chunkSize) => {
 export const getPages = list => {
   const pages = [];
 
-  for (let i = 1; i <= list.length; i++) {
-    pages.push(i);
-  }
+  list.forEach((item, i) => pages.push(i + 1));
 
   return pages;
 };

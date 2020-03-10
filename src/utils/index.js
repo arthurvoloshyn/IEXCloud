@@ -14,7 +14,7 @@ export const chunkArray = (myArray, chunkSize) => {
     results.push(subArray);
   }
 
-  return results;
+  return [...results];
 };
 
 export const getPages = list => {
@@ -31,5 +31,5 @@ export const dragging = (droppableIndexStart, droppableIndexEnd, financials, cur
     financials[currentPageIndex].splice(droppableIndexEnd, 0, ...list);
   }
 
-  return financials;
+  return [...financials];
 };

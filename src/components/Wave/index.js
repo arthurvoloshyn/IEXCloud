@@ -4,13 +4,17 @@ import cn from 'classnames';
 
 import { dotsList } from '../../consts';
 
-const Wave = ({ className }) => (
-  <span id="wave">
-    {dotsList.map(({ id, baseClassName }) => (
-      <span key={id} className={cn(baseClassName, className)} />
-    ))}
-  </span>
-);
+const Wave = ({ className }) => {
+  const dotClasses = (baseClassName, className) => cn(baseClassName, className);
+
+  return (
+    <span id="wave">
+      {dotsList.map(({ id, baseClassName }) => (
+        <span key={id} className={dotClasses(baseClassName, className)} />
+      ))}
+    </span>
+  );
+};
 
 Wave.propTypes = {
   className: PropTypes.string

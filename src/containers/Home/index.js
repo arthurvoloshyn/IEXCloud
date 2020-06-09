@@ -71,26 +71,24 @@ class Home extends Component {
 
     const pages = getPages(financials);
 
+    if (loading) return <Loader />;
+
+    if (error) return <Error />;
+
     return (
       <Container className="mt-3" fluid="md">
         <Row>
-          {loading ? (
-            <Loader />
-          ) : error ? (
-            <Error />
-          ) : (
-            <div className="content">
-              {financials.length ? (
-                <>
-                  <h1 className="text-center mb-3">Symbol: {symbol}</h1>
-                  <Table result={financials} sortDrag={sortDrag} activePage={activePage} />
-                  <Pagination changePage={changePage} activePage={activePage} pages={pages} />
-                </>
-              ) : (
-                <EmptyPage />
-              )}
-            </div>
-          )}
+          <div className="content">
+            {financials.length ? (
+              <>
+                <h1 className="text-center mb-3">Symbol: {symbol}</h1>
+                <Table result={financials} sortDrag={sortDrag} activePage={activePage} />
+                <Pagination changePage={changePage} activePage={activePage} pages={pages} />
+              </>
+            ) : (
+              <EmptyPage />
+            )}
+          </div>
         </Row>
       </Container>
     );

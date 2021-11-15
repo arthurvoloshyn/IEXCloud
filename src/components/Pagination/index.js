@@ -8,22 +8,28 @@ const MyPagination = ({ pages, activePage, changePage }) => {
   const isFirstPage = activePage === 1;
   const isLastPage = activePage === pages[pages.length - 1];
 
+  const goToFirstPage = () => changePage(pages[0]);
+  const goToPreviousPage = () => changePage(activePage - 1);
+  const goToNextPage = () => changePage(activePage + 1);
+  const goToLastPage = () => changePage(pages[pages.length - 1]);
+
   return (
     <Pagination>
       <PaginationItem disabled={isFirstPage}>
-        <PaginationLink onClick={() => changePage(pages[0])} first />
+        <PaginationLink onClick={goToFirstPage} first />
       </PaginationItem>
       <PaginationItem disabled={isFirstPage}>
-        <PaginationLink onClick={() => changePage(activePage - 1)} previous />
+        <PaginationLink onClick={goToPreviousPage} previous />
       </PaginationItem>
-      {pages.map(page => (
-        <PaginationElement key={page} page={page} activePage={activePage} changePage={() => changePage(page)} />
-      ))}
+      {pages.map(page => {
+        const goToPage = () => changePage(page);
+        return <PaginationElement key={page} page={page} activePage={activePage} changePage={goToPage} />;
+      })}
       <PaginationItem disabled={isLastPage}>
-        <PaginationLink onClick={() => changePage(activePage + 1)} next />
+        <PaginationLink onClick={goToNextPage} next />
       </PaginationItem>
       <PaginationItem disabled={isLastPage}>
-        <PaginationLink onClick={() => changePage(pages[pages.length - 1])} last />
+        <PaginationLink onClick={goToLastPage} last />
       </PaginationItem>
     </Pagination>
   );
